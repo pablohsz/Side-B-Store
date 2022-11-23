@@ -44,6 +44,25 @@ public class PedidoEndereco extends AppCompatActivity {
                         edBairro.setText(formatSpace(retorno.getBairro()));
                         edCidade.setText(formatSpace(retorno.getLocalidade()));
                         edUf.setText(retorno.getUf());
+
+                        edLongadouro.setFocusable(false);
+                        edLongadouro.setClickable(false);
+                        edLongadouro.setCursorVisible(false);
+
+                        edBairro.setFocusable(false);
+                        edBairro.setClickable(false);
+                        edBairro.setCursorVisible(false);
+
+                        edCidade.setFocusable(false);
+                        edCidade.setClickable(false);
+                        edCidade.setCursorVisible(false);
+
+                        edUf.setFocusable(false);
+                        edUf.setClickable(false);
+                        edUf.setCursorVisible(false);
+
+                        edComplemento.requestFocus();
+
                     } else {
                         Toast.makeText(PedidoEndereco.this, "CEP não encontrado! Verifique e tente novamente.", Toast.LENGTH_SHORT).show();
                     }
@@ -56,15 +75,17 @@ public class PedidoEndereco extends AppCompatActivity {
 
     public String formatSpace(String s) {
         //Método para adicionar os espaços entre as palavras retornadas pela consulta
-        String result = "";
-        for (int i = 0; i < s.length(); i++) {
+        int i = 0;
+        StringBuilder result = new StringBuilder();
+        for (i = 1; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isUpperCase(c)) {
-                result += " " + c;
+                result.append(" " + c);
             } else {
-                result += c;
+                result.append(c);
             }
         }
-        return result;
+        result.insert(0, s.charAt(0));
+        return result.toString();
     }
 }

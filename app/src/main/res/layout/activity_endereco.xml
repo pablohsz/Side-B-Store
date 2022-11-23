@@ -95,7 +95,8 @@
         android:layout_marginRight="8dp"
         android:layout_toLeftOf="@id/edUf"
         android:hint="Cidade"
-        android:inputType="text" />
+        android:inputType="text"
+        />
 
     <EditText
         android:id="@+id/edUf"
@@ -108,7 +109,8 @@
         android:layout_marginRight="25dp"
         android:hint="UF"
         android:inputType="text"
-        android:maxLength="2" />
+        android:maxLength="2"
+        />
 
 
 </RelativeLayout>

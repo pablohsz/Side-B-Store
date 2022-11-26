@@ -1,15 +1,15 @@
-package com.pablo.sideb.service;
+package com.pablo.sideb;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pablo.sideb.R;
 import com.pablo.sideb.model.ItemViewHolder;
 import com.pablo.sideb.model.Produto;
 
@@ -34,17 +34,24 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Produto produto = itens.get(position);
-        holder.txProduto.setText(produto.getNome());
+        holder.txProduto.setText(produto.getItem());
         holder.txDescricao.setText(produto.getDescricao());
         holder.txValor.setText(produto.getValor());
-        holder.imgFotoProduto.setImageResource(produto.getFotoProduto());
+        holder.imgFotoProduto.setImageResource(produto.getImg());
 
         holder.imgFotoProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "clicou no" + itens.get(position).getNome(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(v.getContext(), ProductActivity.class);
+                i.putExtra("cod", produto.getCod());
+                i.putExtra("produto", produto.getItem());
+                i.putExtra("valor", produto.getValor());
+                i.putExtra("imagem", produto.getImg());
+                i.putExtra("caracteristicas", produto.getCaracteristicas());
+                i.putExtra("tracklist", produto.getTracklist());
+                v.getContext().startActivity(i);
             }
         });
     }

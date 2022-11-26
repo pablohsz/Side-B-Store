@@ -10,11 +10,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pablo.sideb.model.Cep;
-import com.pablo.sideb.service.RetornoJSON;
+import com.pablo.sideb.service.ResponseJSON;
 
 import java.util.concurrent.ExecutionException;
 
-public class PedidoEndereco extends AppCompatActivity {
+public class AdressActivity extends AppCompatActivity {
 
     EditText edCep, edLongadouro, edComplemento, edBairro, edCidade, edUf;
     TextView txEndereco;
@@ -23,7 +23,7 @@ public class PedidoEndereco extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_endereco);
+        setContentView(R.layout.activity_adress);
         edCep = findViewById(R.id.edCep);
         btnChecar = findViewById(R.id.btnBuscar);
         edLongadouro = findViewById(R.id.edLongadouro);
@@ -37,7 +37,7 @@ public class PedidoEndereco extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     Cep retorno;
-                    RetornoJSON rj = new RetornoJSON(edCep.getText().toString());
+                    ResponseJSON rj = new ResponseJSON(edCep.getText().toString());
                     retorno = rj.execute().get();
                     if(retorno.getCep() != null){
                         edLongadouro.setText(formatSpace(retorno.getLongadouro()));
@@ -64,7 +64,7 @@ public class PedidoEndereco extends AppCompatActivity {
                         edComplemento.requestFocus();
 
                     } else {
-                        Toast.makeText(PedidoEndereco.this, "CEP não encontrado! Verifique e tente novamente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdressActivity.this, "CEP não encontrado! Verifique e tente novamente.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();

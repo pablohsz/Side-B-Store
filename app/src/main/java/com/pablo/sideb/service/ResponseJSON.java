@@ -12,11 +12,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class RetornoJSON extends AsyncTask<Void, Void, Cep> {
+public class ResponseJSON extends AsyncTask<Void, Void, Cep> {
 
     private final String cep;
 
-    public RetornoJSON(String cep) {
+    public ResponseJSON(String cep) {
         this.cep = cep;
     }
 

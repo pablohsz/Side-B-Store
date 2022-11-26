@@ -2,24 +2,42 @@ package com.pablo.sideb.model;
 
 public class Produto {
 
-    private String nome;
+    private int cod;
+    private String item;
     private String descricao;
     private String valor;
-    private int fotoProduto;
+    private int img;
+    private String caracteristicas;
+    private String tracklist;
 
-    public Produto(String nome, String descricao, String valor, int fotoProduto) {
-        this.nome = nome;
+    public Produto() {
+    }
+
+    public Produto(int cod, String nome, String descricao, String valor, int img, String caracteristicas, String tracklist) {
+        this.cod = cod;
+        this.item = nome;
         this.descricao = descricao;
         this.valor = valor;
-        this.fotoProduto = fotoProduto;
+        this.img = img;
+        this.caracteristicas = caracteristicas;
+        this.tracklist = tracklist;
     }
 
-    public String getNome() {
-        return nome;
+
+
+    public Produto(String nome, String descricao, String valor, int img) {
+        this.item = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.img = img;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 
     public String getDescricao() {
@@ -38,12 +56,36 @@ public class Produto {
         this.valor = valor;
     }
 
-    public int getFotoProduto() {
-        return fotoProduto;
+    public int getImg() {
+        return img;
     }
 
-    public void setFotoProduto(int fotoProduto) {
-        this.fotoProduto = fotoProduto;
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    public String getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public String getTracklist() {
+        return tracklist;
+    }
+
+    public void setTracklist(String tracklist) {
+        this.tracklist = tracklist;
     }
 
 }

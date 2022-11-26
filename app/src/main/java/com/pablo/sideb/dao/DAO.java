@@ -1,4 +1,4 @@
-package com.pablo.sideb.controller;
+package com.pablo.sideb.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -25,8 +25,8 @@ public class DAO extends SQLiteOpenHelper {
     private static final String c_nome = "nome";
     private static final String c_email = "email";
     private static final String c_telefone = "telefone";
-    //Tabela que armazena os dados do cliente
-    private static final String tb_pedido = "custumer";
+    //Tabela que armazena os dados do pedido
+    private static final String tb_pedido = "orders";
     private static final String c_idPedido = "id";
     private static final String c_dtCompra = "dt_compra";
     private static final String c_item = "item";

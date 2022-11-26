@@ -20,9 +20,9 @@
 
             <ImageView
                 android:id="@+id/imgFotoProduto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/caprisongs_albumcover"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/albumcover_after_hours"
                 android:contentDescription="Foto do produto anunciado" />
 
             <LinearLayout
@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="NOME DO PRODUTO"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="R$ 19,99"
-                    android:textSize="30dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
             </LinearLayout>
 

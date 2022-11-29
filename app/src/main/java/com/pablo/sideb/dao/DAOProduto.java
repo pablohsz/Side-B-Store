@@ -43,7 +43,7 @@ public class DAOProduto extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //CREATE TABLE cliente (cpf TEXT PRIMARY KEY, ...)
+        //CREATE TABLE products (cod INTEGER PRIMARY KEY, ...)
         query = "CREATE TABLE " + tb_produtos + "(" +
                 c_cod + " INTEGER PRIMARY KEY, " +
                 c_item + " TEXT, " +
@@ -54,6 +54,7 @@ public class DAOProduto extends SQLiteOpenHelper {
                 c_tracklist + " TEXT)";
         db.execSQL(query);
 
+        //INSERT INTO products (cod, item, ...)
         for (Produto prod : produtos) {
             query = "";
             query = "INSERT INTO " + tb_produtos + "(" +
@@ -79,14 +80,6 @@ public class DAOProduto extends SQLiteOpenHelper {
         this.produtos = produtos;
     }
 
-    public void addProduto() {
-
-        Produto prod = new Produto(1000, "FKA Twigs - Caprisongs",
-                "Insira aqui sua breve descrição sobre a obra ou produto.",
-                "R$ 30,99", R.drawable.albumcover_caprisongs, "N/A", "N/A");
-
-
-    }
 
     public ArrayList<Produto> listarProdutos() {
         SQLiteDatabase db = this.getReadableDatabase();

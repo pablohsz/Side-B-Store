@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ProductActivity.class);
+                Intent i = new Intent(MainActivity.this, OrderActivity.class);
                 startActivity(i);
             }
         });

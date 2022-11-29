@@ -32,6 +32,10 @@ public class DAO extends SQLiteOpenHelper {
     private static final String c_item = "item";
     private static final String c_qtde = "qtde";
     private static final String c_endereco = "endereco";
+    //Tabela que armazena os itens do carrinho
+    private static final String tb_carrinho = "orders";
+    private static final String c_idItem = "idItem";
+    private static final String c_qtdeCarrinho = "qtdeItem";
 
     private String query = "";
     public static Context contexto;
@@ -51,7 +55,7 @@ public class DAO extends SQLiteOpenHelper {
                 c_telefone + " TEXT NOT NULL)";
         db.execSQL(query);
         query = "";
-        //CREATE TABLE cliente (cpf TEXT PRIMARY KEY, ...)
+        //CREATE TABLE orders (id INT, ...)
         query = "CREATE TABLE " + tb_pedido + "(" +
                 c_idPedido + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 c_dtCompra + " TEXT NOT NULL, " +
@@ -59,6 +63,7 @@ public class DAO extends SQLiteOpenHelper {
                 c_qtde + " INTEGER NOT NULL, " +
                 c_endereco + " TEXT NOT NULL)";
         db.execSQL(query);
+        query = "";
     }
 
     @Override

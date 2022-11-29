@@ -1,38 +1,38 @@
 package com.pablo.sideb;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.textfield.TextInputEditText;
 import com.pablo.sideb.model.Cep;
 import com.pablo.sideb.service.ResponseJSON;
 
 import java.util.concurrent.ExecutionException;
 
-public class AdressActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
 
-    EditText edCep, edLongadouro, edComplemento, edBairro, edCidade, edUf;
-    TextView txEndereco;
-    Button btnChecar;
+    Button btnBuscar;
+    TextInputEditText edCep, edLongadouro, edComplemento, edNumero, edBairro, edCidade, edUf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_adress);
+        setContentView(R.layout.activity_order);
         edCep = findViewById(R.id.edCep);
-        btnChecar = findViewById(R.id.btnBuscar);
+        btnBuscar = findViewById(R.id.btnBuscar);
         edLongadouro = findViewById(R.id.edLongadouro);
         edComplemento = findViewById(R.id.edComplemento);
         edBairro = findViewById(R.id.edBairro);
         edCidade = findViewById(R.id.edCidade);
         edUf = findViewById(R.id.edUf);
+        edNumero = findViewById(R.id.edNumero);
 
-        btnChecar.setOnClickListener(new View.OnClickListener() {
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -61,16 +61,18 @@ public class AdressActivity extends AppCompatActivity {
                         edUf.setClickable(false);
                         edUf.setCursorVisible(false);
 
-                        edComplemento.requestFocus();
+                        edNumero.requestFocus();
 
                     } else {
-                        Toast.makeText(AdressActivity.this, "CEP não encontrado! Verifique e tente novamente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrderActivity.this, "CEP não encontrado! Verifique e tente novamente.", Toast.LENGTH_SHORT).show();
                     }
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
+
+
     }
 
     public String formatSpace(String s) {

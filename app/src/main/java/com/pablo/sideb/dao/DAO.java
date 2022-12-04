@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.pablo.sideb.model.Cliente;
@@ -71,27 +72,41 @@ public class DAO extends SQLiteOpenHelper {
 
     }
 
-    public void addCliente(Cliente cli){
+    public void addCliente(@NonNull Cliente cli) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(c_cpf, cli.getCpf());
-        values.put(c_nome, cli.getNome());
-        values.put(c_email, cli.getEmail());
-        values.put(c_telefone, cli.getTelefone());
-        db.insert(tb_cliente, null, values);
+        String query = "INSERT INTO  " + tb_cliente +
+                 " (" + c_cpf + ", " + c_nome + ", " + c_email + ", " + c_telefone + ") VALUES ('" +
+                cli.getCpf() + "', '" + cli.getNome() + "', '" + cli.getEmail() + "', '" + cli.getTelefone() + "')";
+        db.execSQL(query);
         db.close();
     }
 
-    public void removeArtista(int id){
+    public Cliente consultarCliente() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Pedido> pedidoLista = new ArrayList<>();
+
+        String query = "SELECT * FROM " + tb_cliente;
+        Cursor cursor = db.rawQuery(query, null);
+        Cliente cli = new Cliente();
+        cli.setCpf(cursor.getString(0));
+        cli.setNome(cursor.getString(1));
+        cli.setEmail(cursor.getString(2));
+        cli.setTelefone(cursor.getString(3));
+
+        return cli;
+    }
+
+    public void removePedido(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(tb_pedido, c_idPedido + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 
-    public void addPedido(Pedido ped){
+    public void addPedido(Pedido ped) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+
         ContentValues values = new ContentValues();
-        values.put(c_idPedido, ped.getIdPedido());
         values.put(c_dtCompra, ped.getDtCompra());
         values.put(c_item, ped.getItem());
         values.put(c_qtde, ped.getQtde());
@@ -100,13 +115,13 @@ public class DAO extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Pedido> listarArtistas(){
+    public List<Pedido> listarPedidos() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Pedido> pedidoLista = new ArrayList<>();
 
         String query = "SELECT * FROM " + tb_pedido;
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 Pedido ped = new Pedido();
                 ped.setIdPedido(Integer.parseInt(cursor.getString(0)));

@@ -18,13 +18,15 @@ public class ListActivity extends AppCompatActivity {
     RecyclerView rcyViewItens;
     ItemAdapter adapter;
     ArrayList<Produto> itens;
-    DAOProduto bdProdutos = new DAOProduto(this);
+    DAOProduto bdProdutos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        bdProdutos = new DAOProduto(this);
         rcyViewItens = findViewById(R.id.rcyViewItens);
+        bdProdutos.getReadableDatabase();
         itens = bdProdutos.listarProdutos();
         adapter = new ItemAdapter(ListActivity.this, itens);
         rcyViewItens.setLayoutManager(new LinearLayoutManager(ListActivity.this,

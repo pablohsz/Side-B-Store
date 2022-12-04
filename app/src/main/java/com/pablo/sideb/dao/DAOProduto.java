@@ -85,7 +85,7 @@ public class DAOProduto extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Produto> prodLista = new ArrayList<>();
 
-        String query = "SELECT * FROM " + tb_produtos;
+        String query = "SELECT * FROM " + name +"." +tb_produtos;
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
@@ -101,6 +101,7 @@ public class DAOProduto extends SQLiteOpenHelper {
                 prodLista.add(prod);
             } while (cursor.moveToNext());
         }
+        db.close();
         return prodLista;
     }
 
@@ -245,6 +246,90 @@ public class DAOProduto extends SQLiteOpenHelper {
                         "12. Bartender\n" +
                         "13. Happiness Is a Butterfly\n" +
                         "14. Hope Is a Dangerous Thing for Woman Like Me to Have — but I Have It"));
+
+        produtos.add(new Produto(107, "The Weeknd - Dawn FM",
+                "Dawn FM é o quinto álbum do cantor e compositor The Weeknd.",
+                "R$ 78,99",
+                R.drawable.albumcover_dawnfm,
+                "Dawn FM é o quinto álbum de estúdio do cantor e compositor canadense The Weeknd, lançado em 7 de janeiro de 2022, através das gravadoras XO e Republic Records.",
+                "1. Dawn FM\n" +
+                        "2. Gasoline\n" +
+                        "3. How do I make you love me?\n" +
+                        "4. Take my breath\n" +
+                        "5. Sacrifice\n" +
+                        "6. A tale by Quincy\n" +
+                        "7. Out of time\n" +
+                        "8. Here we go... again\n" +
+                        "9. Best friends\n" +
+                        "10. Is there someone else?\n" +
+                        "11. Starry Eyes\n" +
+                        "12. Every angel is terrifying\n" +
+                        "13. Don t break my heart\n" +
+                        "14. I heard you re married\n" +
+                        "15. Less than zero\n" +
+                        "16. Phantom regret by Jim"));
+
+        produtos.add(new Produto(108, "Rosalía - MOTOMAMI",
+                "MOTOMAMI é o sucessor do aclamado El Mal Querer.",
+                "R$ 54,99",
+                R.drawable.albumcover_motomami,
+                "Motomami é o terceiro álbum de estúdio da cantora e compositora espanhola Rosalía, lançado em 18 de março de 2022 pela Columbia Records.",
+                "1. Saoko\n" +
+                        "2. Candy\n" +
+                        "3. La Fama (feat. The Weeknd)\n" +
+                        "4. Bulerías\n" +
+                        "5. Chicken Teriyaki\n" +
+                        "6. Hentai\n" +
+                        "7. Bizcochito\n" +
+                        "8. G3N15\n" +
+                        "9. MOTOMAMI\n" +
+                        "10. Diablo\n" +
+                        "11. Delirio de Grandeza\n" +
+                        "12. Cuuuuuuuuuute\n" +
+                        "13. Como un G\n" +
+                        "14. MOTOMAMI Alphabet\n" +
+                        "15. La Combi Versace (feat. Tokischa)\n" +
+                        "16. Sakura"));
+
+
+        produtos.add(new Produto(109, "Rina Sawayama - Hold The Girl",
+                "Segundo álbum da cantora traz inovações.",
+                "R$ 32,87",
+                R.drawable.albumcover_holdthegirl,
+                "Hold the Girl é o segundo álbum de estúdio da cantora e compositora nipo-britânica Rina Sawayama, lançado em 16 de setembro de 2022, através da Dirty Hit. O primeiro single do álbum, intitulado \"This Hell\", foi lançado em 18 de maio de 2022.",
+                "1. Minor Feelings\n" +
+                        "2. Hold The Girl\n" +
+                        "3. This Hell\n" +
+                        "4. Catch Me In The Air\n" +
+                        "5. Forgiveness\n" +
+                        "6. Holy (Till You Let Me Go)\n" +
+                        "7. Your Age\n" +
+                        "8. Imagining\n" +
+                        "9. Frankenstein\n" +
+                        "10. Hurricanes\n" +
+                        "11. Send My Love To John\n" +
+                        "12. Phantom\n" +
+                        "13. To Be Alive"));
+
+       produtos.add(new Produto(110, "Calvin Harris - Funk Wav Bounces Vol.2",
+                "Sexto álbum do DJ traz a vibe do verão.",
+                "R$ 54,99",
+                R.drawable.albumcover_funkwavbounces,
+                "Funk Wav Bounces Vol. 2 é o sexto álbum de estúdio do DJ e produtor musical escocês Calvin Harris. Foi lançado em 5 de agosto de 2022 pela Columbia Records.",
+                "1. Intro\n" +
+                        "2. New Money (feat. 21 Savage)\n" +
+                        "3. Potion (With Dua Lipa & Young Thug)\n" +
+                        "4. Woman Of The Year (Feat. Stefflon Don, Chloe Bailey & Coi Leray)\n" +
+                        "5. Obsessed (Feat. Charlie Puth & Shenseea)\n" +
+                        "6. New To You (Feat. Normani, Tinashe & Offset)\n" +
+                        "7. Ready Or Not (Feat. Busta Rhymes)\n" +
+                        "8. Stay With Me (feat. Pharrell, Justin Timberlake & Halsey)\n" +
+                        "9. Stay With Me (Part. 2) (Feat. Justin Timberlake, Halsey & Pharrell)\n" +
+                        "10. Somebody Else (Feat. Jorja Smith & Lil Durk)\n" +
+                        "11. Nothing More To Say (Feat. 6Lack & Donae o)\n" +
+                        "12. Live My Best Life (Feat. Snoop Dogg & Latto)\n" +
+                        "13. Lean On Me (Feat. Swae Lee)\n" +
+                        "14. Day One (Feat. Pharrell & Pusha T)"));
     }
 
 

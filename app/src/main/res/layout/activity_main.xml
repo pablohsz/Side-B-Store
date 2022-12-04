@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.SideB.AppBarOverlay">
+
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="10dp"
+            android:elevation="3dp"
+            android:src="@drawable/banner_um" />
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/img1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="3dp"
+            android:src="@drawable/banner_rosalia" />
+
+        <ImageView
+            android:id="@+id/cards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="3dp"
+            android:src="@drawable/banner_vertodos" />
+
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cards"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="3dp"
+            android:src="@drawable/banner_promo" />
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/img3"
+            android:id="@+id/btnEndereco"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="ENDEREÇO" />
+
+        <Button
+            android:id="@+id/btnProdutos"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnEndereco"
+            android:layout_centerHorizontal="true"
+            android:text="LISTAR PRODUTOS" />
+
+    </RelativeLayout>
+</ScrollView>

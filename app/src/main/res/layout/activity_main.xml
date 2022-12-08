@@ -11,72 +11,79 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.SideB.AppBarOverlay">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/logo" />
 
+                <TextView
+                    android:id="@+id/meusPedidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="20dp"
+                    android:text="MEUS PEDIDOS"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
-            android:id="@+id/img1"
+            android:id="@+id/banner1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_below="@+id/appBarHome"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="60dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
             android:elevation="3dp"
-            android:src="@drawable/banner_um" />
+            android:src="@drawable/banner_calvin_harris" />
 
         <ImageView
-            android:id="@+id/img2"
+            android:id="@+id/banner2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@id/img1"
+            android:layout_below="@id/banner1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="3dp"
             android:elevation="3dp"
             android:src="@drawable/banner_rosalia" />
 
         <ImageView
-            android:id="@+id/cards"
+            android:id="@+id/cardTodos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img2"
+            android:layout_below="@id/banner2"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:elevation="3dp"
+            android:layout_marginBottom="3dp"
             android:src="@drawable/banner_vertodos" />
 
 
         <ImageView
-            android:id="@+id/img3"
+            android:id="@+id/banner3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cards"
+            android:layout_below="@id/cardTodos"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:elevation="3dp"
             android:src="@drawable/banner_promo" />
-
-        <Button
-            android:layout_marginTop="30dp"
-            android:layout_below="@id/img3"
-            android:id="@+id/btnEndereco"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="ENDEREÇO" />
-
-        <Button
-            android:id="@+id/btnProdutos"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnEndereco"
-            android:layout_centerHorizontal="true"
-            android:text="LISTAR PRODUTOS" />
 
     </RelativeLayout>
 </ScrollView>

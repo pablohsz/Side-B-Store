@@ -41,7 +41,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         holder.txValor.setText(produto.getValor());
         holder.imgFotoProduto.setImageResource(produto.getImg());
 
-        holder.imgFotoProduto.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), ProductActivity.class);

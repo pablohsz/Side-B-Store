@@ -1,28 +1,39 @@
 package com.pablo.sideb;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.pablo.sideb.dao.DAO;
 import com.pablo.sideb.model.Cep;
 import com.pablo.sideb.model.Cliente;
+import com.pablo.sideb.model.Pedido;
 import com.pablo.sideb.service.ResponseJSON;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class OrderActivity extends AppCompatActivity {
 
     Button btnBuscar, btnFazerPedido;
-    TextInputEditText edNomeCli, edCpfCli, edTelefoneCli,edCep, edLongadouro, edComplemento, edNumero, edBairro, edCidade, edUf,
+    TextInputEditText edNomeCli, edCpfCli, edTelefoneCli, edCep, edLongadouro, edComplemento, edNumero, edBairro, edCidade, edUf,
             edProduto, edQtde, edValor;
     Intent reiceveData;
     DAO database = new DAO(this);
+    TextView cancelar;
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    LocalDateTime now;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,7 @@ public class OrderActivity extends AppCompatActivity {
         edProduto = findViewById(R.id.edProduto);
         edQtde = findViewById(R.id.edQtde);
         edValor = findViewById(R.id.edValor);
+        cancelar = findViewById(R.id.cancelar);
         btnFazerPedido = findViewById(R.id.btnFazerPedido);
         edNomeCli = findViewById(R.id.edNomeCli);
         edCpfCli = findViewById(R.id.edCpfCli);
@@ -47,12 +59,11 @@ public class OrderActivity extends AppCompatActivity {
 
 
         //Preenche os campos de identificação
-      /*  Cliente cli = new Cliente();
+        Cliente cli = new Cliente();
         cli = database.consultarCliente();
         edNomeCli.setText(cli.getNome());
         edCpfCli.setText(cli.getCpf());
-        edTelefoneCli.setText(cli.getTelefone());*/
-
+        edTelefoneCli.setText(cli.getTelefone());
 
 
         //Preenche os dados do produto
@@ -103,8 +114,59 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
+        btnFazerPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (edCep.getText().toString().equals("")) {
+                    Toast.makeText(OrderActivity.this, "CEP não pode ficar em branco!", Toast.LENGTH_SHORT).show();
+                    edCep.requestFocus();
+                } else if (edLongadouro.getText().toString().equals("")) {
+                    Toast.makeText(OrderActivity.this, "Toque no botão buscar para realizar busca de CEP.", Toast.LENGTH_SHORT).show();
+                    btnBuscar.requestFocus();
+                } else if (edNumero.getText().toString().equals("")) {
+                    Toast.makeText(OrderActivity.this, "N° não pode ficar em branco!", Toast.LENGTH_SHORT).show();
+                    edNumero.requestFocus();
+                } else if (edComplemento.getText().toString().equals("")) {
+                    Toast.makeText(OrderActivity.this, "Complemento não pode ficar em branco!", Toast.LENGTH_SHORT).show();
+                    edComplemento.requestFocus();
+                } else {
+                    String endereco = edLongadouro.getText().toString() + ", " +
+                            edNumero.getText().toString() + ", " +
+                            edComplemento.getText().toString() + " - " +
+                            edBairro.getText().toString() + ",  " +
+                            edCidade.getText().toString() + " - " +
+                            edUf.getText().toString() + ", " +
+                            edCep.getText().toString();
+                    Random r = new Random();
+                    now = LocalDateTime.now();
+                    Pedido ped = new Pedido();
+                    ped.setDtCompra(dtf.format(now));
+                    ped.setEnderecoEntrega(endereco);
+                    ped.setItem(edProduto.getText().toString());
+                    ped.setQtde(Integer.parseInt(edQtde.getText().toString()));
+                    ped.setValorPedido(edValor.getText().toString());
+                    try {
+                        database.addPedido(ped);
+                        finish();
+                        Toast.makeText(OrderActivity.this, "Pedido realizado!", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e){
+                        Toast.makeText(OrderActivity.this, "Não foi possível realizar o pedido!\nTente novamente mais tarde.", Toast.LENGTH_SHORT).show();
+                    } 
+                }
+            }
+        });
+
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
+
 
     public String formatSpace(String s) {
         //Método para adicionar os espaços entre as palavras retornadas pela consulta

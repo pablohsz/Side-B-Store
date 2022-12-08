@@ -7,16 +7,18 @@ public class Pedido {
     private String item;
     private int qtde;
     private String enderecoEntrega;
+    private String valorPedido;
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, String dtCompra, String item, int qtde, String enderecoEntrega) {
+    public Pedido(int idPedido, String dtCompra, String item, int qtde, String enderecoEntrega, String valorPedido) {
         this.idPedido = idPedido;
         this.dtCompra = dtCompra;
         this.item = item;
         this.qtde = qtde;
         this.enderecoEntrega = enderecoEntrega;
+        this.valorPedido = valorPedido;
     }
 
     public int getIdPedido() {
@@ -57,6 +59,14 @@ public class Pedido {
 
     public void setEnderecoEntrega(String enderecoEntrega) {
         this.enderecoEntrega = enderecoEntrega;
+    }
+
+    public String getValorPedido() {
+        return valorPedido;
+    }
+
+    public void setValorPedido(String valorPedido) {
+        this.valorPedido = valorPedido;
     }
 
 }

@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txTituloProduto"
             android:layout_marginLeft="60dp"
-            android:textSize="5dp"
+            android:textSize="10dp"
             android:text="COD: " />
 
         <TextView
